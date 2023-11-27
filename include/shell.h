@@ -4,6 +4,7 @@
 using namespace std;
 
 class Shell {
+  filesystem::path path = filesystem::current_path();
   string menuChoice();
 public:
   void run();

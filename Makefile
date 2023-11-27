@@ -1,4 +1,4 @@
-CC = g++
+CC = g++ -std=c++20
 CFLAGS = -Iinclude
 SRC = $(wildcard src/*.cpp)
 
