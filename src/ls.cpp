@@ -12,6 +12,9 @@ void LS::execute(istream &is, filesystem::path path) {
     else if (arg == "--version") {
       version();
       return;
+    } else if (arg == "--help") {
+      help();
+      return;
     } else {
       cerr << "Invalid Option\n";
       return;
@@ -34,3 +37,5 @@ void LS::print(bool hasL, filesystem::path path) {
 void LS::executeR(bool hasL, filesystem::path path) {
   for (const auto& entry : filesystem::recursive_directory_iterator(path)) print(hasL, entry.path());        
 }
+
+void LS::help() { printf("List information about the files in the current directory.\n-l\tDetailed list\n-R\tList recursively\n\n"); }

@@ -12,5 +12,5 @@ void Command::execute(istream &is, filesystem::path path) {
 }
 
 void Command::version() {
-  printf("(🐚️) 1.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nLicense GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>.\nThis is free software: you are free to change and redistribute it.\nThere is NO WARRANTY, to the extent permitted by law.\nWritten by Mayank Gusain and Dhananjay Sharma.\n");
+  printf("(🐚️) 1.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nLicense GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>.\nThis is free software: you are free to change and redistribute it.\nThere is NO WARRANTY, to the extent permitted by law.\nWritten by Mayank Gusain and Dhananjay Sharma.\n\n");
 }

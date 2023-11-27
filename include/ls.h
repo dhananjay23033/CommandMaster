@@ -7,8 +7,9 @@
 using namespace std;
 
 class LS : public Command {
+  void executeR(bool, filesystem::path), print(bool, filesystem::path), help();
 public:
-  void execute(istream&, filesystem::path), executeR(bool, filesystem::path), print(bool, filesystem::path);
+  void execute(istream&, filesystem::path);
 };
 
 #endif

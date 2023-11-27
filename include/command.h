@@ -6,8 +6,10 @@
 using namespace std;
 
 class Command {
+protected:
+  void version();
 public:
-  void execute(istream&, filesystem::path), version();
+  void execute(istream&, filesystem::path);
 };
 
 #endif
