@@ -7,7 +7,7 @@ using namespace std;
 
 class Command {
 public:
-  void execute(istream&, filesystem::path);
+  void execute(istream&, filesystem::path), version();
 };
 
 #endif

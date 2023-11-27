@@ -9,7 +9,10 @@ void LS::execute(istream &is, filesystem::path path) {
   while (is >> arg) {
     if (arg == "-l") hasL = true;
     else if (arg == "-R") hasR = true;
-    else {
+    else if (arg == "--version") {
+      version();
+      return;
+    } else {
       cerr << "Invalid Option\n";
       return;
     }
