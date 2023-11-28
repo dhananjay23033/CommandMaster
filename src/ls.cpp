@@ -3,7 +3,7 @@
 
 using namespace std;
 
-void LS::execute(istream &is, filesystem::path path) {
+void LS::execute(istream &is, filesystem::path &path) {
   bool hasL = false, hasR = false;
   string arg;
   while (is >> arg) {
