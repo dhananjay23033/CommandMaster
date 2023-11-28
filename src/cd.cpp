@@ -4,11 +4,28 @@
 using namespace std;
 
 void CD::execute(istream &is, filesystem::path &path) {
-  string target;
-  is >> target;
-  if (target == ".." or target == "~") {
+  string arg, target;
+  bool hasV = false, targetSet = false;
+  for (; is >> arg;) {
+    if (arg == "-v") hasV = true;
+    else if (arg == "--version") {
+      version();
+      return;
+    } else if (arg == "--help") {
+      help();
+      return;
+    } else if (!targetSet) {
+      target = arg;
+      targetSet = true;
+    } else {
+      cerr << "Invalid Option\n";
+      return;
+    }
+  }
+  
+  if (target == ".." or target == "~" or target == "") {
     path = (target == ".." ? path.parent_path() : filesystem::path(getenv("HOME")));
-    cout << "Switched to\n" << path << '\n';
+    if (hasV) cout << "Switched to\n" << path << '\n';
     return;
   }
   
@@ -18,7 +35,7 @@ void CD::execute(istream &is, filesystem::path &path) {
     return;
   }
   
-  cout << "Switched from\n" << path << "\nto\n" << newPath << '\n';
+  if (hasV) cout << "Switched from\n" << path << "\nto\n" << newPath << '\n';
   path = newPath;
 }
 
