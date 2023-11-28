@@ -4,6 +4,7 @@
 #include "cd.h"
 #include "cp.h"
 #include "mv.h"
+#include "rm.h"
 
 using namespace std;
 
@@ -13,7 +14,8 @@ void Command::execute(istream &is, filesystem::path &path) {
   if (cmd == "ls") LS().execute(is, path);
   else if (cmd == "cd") CD().execute(is, path);
   else if (cmd == "cp") CP().execute(is, path);
-  else if (cmd == "mv") MV().execute(is, path); //TODO
+  else if (cmd == "mv") MV().execute(is, path);
+  else if (cmd == "rm") RM().execute(is, path);
   else cerr << "Command not found\n";
 }
 
