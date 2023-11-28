@@ -21,9 +21,10 @@ void LS::execute(istream &is, filesystem::path &path) {
     }
   }
   
-  if (hasR) executeR(hasL, path);
-  else {
-    for (const auto& entry : filesystem::directory_iterator(path)) print(hasL, entry.path());
+  if (hasR) {
+    executeR(hasL, path);
+  } else {
+    for (const auto& entry : filesystem::directory_iterator(path)) print(hasL, entry.path());  
   }
   
   cout << '\n';

@@ -2,6 +2,7 @@
 #include "command.h"
 #include "ls.h"
 #include "cd.h"
+#include "cp.h"
 
 using namespace std;
 
@@ -9,7 +10,8 @@ void Command::execute(istream &is, filesystem::path &path) {
   string cmd;
   is >> cmd;
   if (cmd == "ls") LS().execute(is, path);
-  else if (cmd == "cd") CD().execute(is, path); //TODO
+  else if (cmd == "cd") CD().execute(is, path);
+  else if (cmd == "cp") CP().execute(is, path); //TODO
   else cerr << "Command not found\n";
 }
 
