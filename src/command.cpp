@@ -3,6 +3,7 @@
 #include "ls.h"
 #include "cd.h"
 #include "cp.h"
+#include "mv.h"
 
 using namespace std;
 
@@ -11,7 +12,8 @@ void Command::execute(istream &is, filesystem::path &path) {
   is >> cmd;
   if (cmd == "ls") LS().execute(is, path);
   else if (cmd == "cd") CD().execute(is, path);
-  else if (cmd == "cp") CP().execute(is, path); //TODO
+  else if (cmd == "cp") CP().execute(is, path);
+  else if (cmd == "mv") MV().execute(is, path); //TODO
   else cerr << "Command not found\n";
 }
 
