@@ -4,10 +4,10 @@
 using namespace std;
 
 void MV::execute(istream &is, filesystem::path &path) {
- string arg, srcDestPair[2];
- bool hasV = false;
- int isd = 0;
- for (; is >> arg;) {
+  string arg, srcDestPair[2];
+  bool hasV = false;
+  int isd = 0;
+  for (; is >> arg;) {
    if (arg == "-v" || arg == "--verbose") hasV = true;
    else if (arg == "--version") {
      version();
@@ -20,10 +20,11 @@ void MV::execute(istream &is, filesystem::path &path) {
      cerr << "Invalid Option\n";
      return;
    }
- }
+  }
 
- filesystem::path srcPath = path / srcDestPair[0];
- filesystem::path destPath = path / srcDestPair[1];
+  auto absSrc = filesystem::path(srcDestPair[0]), absDest = filesystem::path(srcDestPair[1]);
+  filesystem::path srcPath = (absSrc.is_absolute() ? absSrc : path / srcDestPair[0]);
+ filesystem::path destPath = (absDest.is_absolute() ? absDest : path / srcDestPair[1]);
 
  if (!filesystem::exists(srcPath)) {
    cerr << "Source file does not exist\n";
