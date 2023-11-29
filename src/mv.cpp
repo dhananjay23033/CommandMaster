@@ -24,23 +24,22 @@ void MV::execute(istream &is, filesystem::path &path) {
 
   auto absSrc = filesystem::path(srcDestPair[0]), absDest = filesystem::path(srcDestPair[1]);
   filesystem::path srcPath = (absSrc.is_absolute() ? absSrc : path / srcDestPair[0]);
- filesystem::path destPath = (absDest.is_absolute() ? absDest : path / srcDestPair[1]);
+  filesystem::path destPath = (absDest.is_absolute() ? absDest : path / srcDestPair[1]);
+  if (!filesystem::exists(srcPath)) {
+    cerr << "Source file does not exist\n";
+    return;
+  }
 
- if (!filesystem::exists(srcPath)) {
-   cerr << "Source file does not exist\n";
-   return;
- }
+  if (filesystem::exists(destPath) && filesystem::is_directory(destPath)) {
+    destPath /= srcPath.filename();
+  }
 
- if (filesystem::exists(destPath) && filesystem::is_directory(destPath)) {
-   destPath /= srcPath.filename();
- }
-
- try {
-   filesystem::rename(srcPath, destPath);
-   if (hasV) cout << srcPath << "\n->\n" << destPath << '\n';
- } catch (const filesystem::filesystem_error& e) {
-   cerr << "Failed to move file: " << e.what() << '\n';
- }
+  try {
+    filesystem::rename(srcPath, destPath);
+    if (hasV) cout << srcPath << "\n->\n" << destPath << '\n';
+  } catch (const filesystem::filesystem_error& e) {
+    cerr << "Failed to move file: " << e.what() << '\n';
+  }
 }
 
 void MV::help() {

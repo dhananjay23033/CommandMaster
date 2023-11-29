@@ -21,8 +21,9 @@ void CP::execute(istream &is, filesystem::path &path) {
     }
   }
   
-  filesystem::path srcPath = path / srcDestPair[0];
-  filesystem::path destPath = path / srcDestPair[1];
+  auto absSrc = filesystem::path(srcDestPair[0]), absDest = filesystem::path(srcDestPair[1]);
+  filesystem::path srcPath = (absSrc.is_absolute() ? absSrc : path / srcDestPair[0]);
+  filesystem::path destPath = (absDest.is_absolute() ? absDest : path / srcDestPair[1]);
   if (!filesystem::exists(srcPath) or !filesystem::is_regular_file(srcPath)) {
     cerr << "Source file does not exist or is not a regular file\n";
     return;
