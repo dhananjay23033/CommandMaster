@@ -5,7 +5,7 @@
 using namespace std;
 
 string Shell::menuChoice() {
-  printf("Enter command or type exit\n");
+  cout << path.string() << " $ ";
   string ln;
   getline(cin, ln);
   return ln;

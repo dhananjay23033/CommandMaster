@@ -37,4 +37,11 @@ void RM::execute(istream &is, filesystem::path &path) {
   }
 }
 
-void RM::help() { printf("Usage: rm [OPTION]... [FILE]...\nRemove (unlink) the FILE(s).\n\n"); }
+void RM::help() {
+  cout << "Usage: rm [OPTION]... [FILE]...\n"
+       << "Remove (unlink) the FILE(s).\n\n"
+       << "Options:\n"
+       << "--version\tDisplay version information\n"
+       << "--help\t\tDisplay this help message\n"
+       << "-v\t\tExplain what is being done during the removal operation (verbose mode)\n\n";
+}

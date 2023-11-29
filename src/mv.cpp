@@ -8,7 +8,7 @@ void MV::execute(istream &is, filesystem::path &path) {
  bool hasV = false;
  int isd = 0;
  for (; is >> arg;) {
-   if (arg == "-v") hasV = true;
+   if (arg == "-v" || arg == "--verbose") hasV = true;
    else if (arg == "--version") {
      version();
      return;
@@ -42,4 +42,12 @@ void MV::execute(istream &is, filesystem::path &path) {
  }
 }
 
-void MV::help() { printf("Usage: mv [OPTION]... SOURCE DEST\nMove SOURCE to DEST (default current directory)\n\n"); }
+void MV::help() {
+  cout << "Usage: mv [OPTION]... SOURCE DEST\n"
+       << "Move SOURCE to DEST (default current directory)\n\n"
+       << "Options:\n"
+       << "--version\tDisplay version information\n"
+       << "--help\t\tDisplay this help message\n"
+       << "-v\t\tExplain what is being done during the move operation (verbose mode)\n\n";
+}
+

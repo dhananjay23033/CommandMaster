@@ -7,7 +7,7 @@ void CP::execute(istream &is, filesystem::path &path) {
   string arg, srcDestPair[2];
   bool hasV = false;
   for (int isd = 0; is >> arg;) {
-    if (arg == "-v") hasV = true;
+    if (arg == "-v" || arg == "--verbose") hasV = true;
     else if (arg == "--version") {
       version();
       return;
@@ -40,4 +40,12 @@ void CP::execute(istream &is, filesystem::path &path) {
   }
 }
 
-void CP::help() { printf("Usage: cp [OPTION]... SOURCE DEST\nCopy SOURCE to DEST (default current directory)\n\n"); }
+void CP::help() {
+  cout << "Usage: cp [OPTION]... SOURCE DEST\n"
+       << "Copy SOURCE to DEST (default current directory)\n\n"
+       << "Options:\n"
+       << "--version\tDisplay version information\n"
+       << "--help\t\tDisplay this help message\n"
+       << "-v, --verbose\tExplain what is being done during the copy operation\n\n";
+}
+

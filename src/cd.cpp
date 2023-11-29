@@ -6,8 +6,8 @@ using namespace std;
 void CD::execute(istream &is, filesystem::path &path) {
   string arg, target;
   bool hasV = false, targetSet = false;
-  for (; is >> arg;) {
-    if (arg == "-v") hasV = true;
+  while (is >> arg) {
+    if (arg == "-v" || arg == "--verbose") hasV = true;
     else if (arg == "--version") {
       version();
       return;
@@ -39,4 +39,10 @@ void CD::execute(istream &is, filesystem::path &path) {
   path = newPath;
 }
 
-void CD::help() { printf("cd: cd [dir]\nChange the shell working directory.\nChange the current directory to DIR.\n\n"); }
+void CD::help() {
+  printf("cd: cd [dir]\nChange the shell working directory.\n\n");
+  printf("Options:\n");
+  printf("  -v, --verbose   Print verbose output.\n");
+  printf("  --version       Print version information.\n");
+  printf("  --help          Display this help message and exit.\n");
+}

@@ -39,4 +39,12 @@ void LS::executeR(bool hasL, filesystem::path path) {
   for (const auto& entry : filesystem::recursive_directory_iterator(path)) print(hasL, entry.path());        
 }
 
-void LS::help() { printf("List information about the files in the current directory.\n-l\tDetailed list\n-R\tList recursively\n\n"); }
+void LS::help() {
+  cout << "Usage: ls [OPTION]... [FILE]...\n"
+       << "List information about the files in the current directory.\n"
+       << "-l\t\tDetailed list\n"
+       << "-R\t\tList recursively\n"
+       << "--version\tDisplay version information\n"
+       << "--help\t\tDisplay help message\n\n";
+}
+
