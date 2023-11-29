@@ -3,9 +3,9 @@
 
 using namespace std;
 
-void LS::execute(istream &is, filesystem::path &path) {
-  bool hasL = false, hasR = false;
-  string arg;
+void LS::execute(istream &is, filesystem::path path) {
+  bool hasL = false, hasR = false, potPathSet = false;
+  string arg, potPath;
   while (is >> arg) {
     if (arg == "-l") hasL = true;
     else if (arg == "-R") hasR = true;
@@ -15,12 +15,16 @@ void LS::execute(istream &is, filesystem::path &path) {
     } else if (arg == "--help") {
       help();
       return;
+    } else if (!potPathSet) {
+      potPath = arg;
+      potPathSet = true;
     } else {
       cerr << "Invalid Option\n";
       return;
     }
   }
   
+  if (filesystem::path(potPath).is_absolute()) path = potPath;
   if (hasR) {
     executeR(hasL, path);
   } else {

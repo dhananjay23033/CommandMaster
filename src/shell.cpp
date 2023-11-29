@@ -5,7 +5,7 @@
 using namespace std;
 
 string Shell::menuChoice() {
-  cout << path.string() << " $ ";
+  cout << path << "$ ";
   string ln;
   getline(cin, ln);
   return ln;

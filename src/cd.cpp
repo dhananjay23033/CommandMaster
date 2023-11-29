@@ -29,7 +29,8 @@ void CD::execute(istream &is, filesystem::path &path) {
     return;
   }
   
-  filesystem::path newPath = path / target;
+  filesystem::path absPath = filesystem::path(target);
+  filesystem::path newPath = (absPath.is_absolute() ? absPath : path / target);
   if (!filesystem::exists(newPath) or !filesystem::is_directory(newPath)) {
     cerr << "Failed to switch to directory\n";
     return;
