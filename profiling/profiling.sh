@@ -51,14 +51,12 @@ echo "Executing ./shell"
 
 time echo "ls"
 
-# echo "Executing ./shell < cp"
-# cd ..
+time echo "cd .."
 
-# echo "Executing ./shell < cp"
-# rm dir_1GB
+time echo "rm dir_1GB"
 
-# echo "Executing ./shell < mv"
-# mv dir_10MB
+time echo "mv dir_10MB"
 
+time echo "cp dir_recursive"
 
 echo "Script completed."
