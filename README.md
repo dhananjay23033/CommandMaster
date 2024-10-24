@@ -76,7 +76,7 @@ To compile and run this project, follow these steps:
 3. **Run the shell:**
 
    ```bash
-   ./custom_shell
+   ./shell
    ```
 
 ## 🔧 Commands and Options
