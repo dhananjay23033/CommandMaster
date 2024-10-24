@@ -9,7 +9,7 @@ class Command {
 protected:
   void version();
 public:
-  void execute(istream&, filesystem::path&, string);
+  void execute(istream&, filesystem::path&);
 };
 
 #endif

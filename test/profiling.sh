@@ -20,43 +20,28 @@ create_directory() {
 create_recursive_directories() {
     local base_dir=$1
     local current_count=$2
-    local remaining_count=$((10000 - current_count))
+    local remaining_count=$((10 - current_count))
 
     if [ "$remaining_count" -le 0 ]; then
         return
     fi
 
-    local sub_dir_name="subdir_$((current_count / 100))"
-    create_directory "$base_dir/$sub_dir_name" 100 10M
+    local sub_dir_name="subdir_$((current_count / 10))"
+    create_directory "$base_dir/$sub_dir_name" 10 1M
 
-    create_recursive_directories "$base_dir/$sub_dir_name" "$((current_count + 100))"
+    create_recursive_directories "$base_dir/$sub_dir_name" "$((current_count + 10))"
 }
 
 # Create directories and files using shell functions
-create_directory "dir_1GB" 2 1G
+create_directory "dir_1GB" 2 1M
 create_directory "dir_10MB" 5 10M
 create_directory "dir_recursive" 5 10M
 create_recursive_directories "dir_recursive" 5
 
-create_large_files
-create_medium_files
+# create_large_files
+# create_medium_files
 cd ..    
-create_recursive_files
+# create_recursive_files
 
-$shell = ../shell
-
-# Time execution of each command
-echo "Executing ./shell"
-./shell
-
-time echo "ls"
-
-time echo "cd .."
-
-time echo "rm dir_1GB"
-
-time echo "mv dir_10MB"
-
-time echo "cp dir_recursive"
 
 echo "Script completed."
